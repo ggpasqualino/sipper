@@ -1,5 +1,5 @@
 defmodule Sipper.CLI do
-  @config_file System.user_home! |> Path.join(".sipper")
+  @config_file System.user_home! |> Path.join(Application.get_env(:sipper, :config_file))
 
   def main(args) do
     args

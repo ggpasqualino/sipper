@@ -1,4 +1,6 @@
 defmodule Sipper.Runner do
+  @feed_parser Application.get_env(:sipper, :feed_parser)
+
   def run(config) do
     get_feed(config)
     |> parse_feed
@@ -13,7 +15,7 @@ defmodule Sipper.Runner do
   end
 
   defp parse_feed(feed) do
-    Sipper.FeedParser.parse(feed)
+    @feed_parser.parse(feed)
   end
 
   defp ignore_episodes(episodes, ignore_episodes) do

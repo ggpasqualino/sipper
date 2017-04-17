@@ -17,7 +17,12 @@ use Mix.Config
 
 # NOTE: If you change this config, you need to recompile, by runnning "mix escript.build".
 config :sipper,
-  feed_timeout_ms: 100_000  # The default 5000 will time out sometimes.
+  config_file: ".sipper",
+  feed_cache: [file: "sipper.cache", ttl_seconds: 60 * 10],
+  feed_client: Sipper.DpdCartClient,
+  feed_timeout_ms: 100_000,  # The default 5000 will time out sometimes.
+  feed_parser: Sipper.FeedParser,
+  file_client: Sipper.DpdCartClient
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment

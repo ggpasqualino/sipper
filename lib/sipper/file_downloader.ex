@@ -4,6 +4,8 @@ defmodule Sipper.FileDownloader do
   @get_label    "[GET]   "
   @rename_label "[RENAME]"
 
+  @file_client Application.get_env(:sipper, :file_client)
+
   def run([], _config) do
     IO.puts :stderr, "Nothing to download! Maybe your subscription is inactive?"
   end
@@ -32,7 +34,7 @@ defmodule Sipper.FileDownloader do
       IO.puts [IO.ANSI.blue, @exists_label, IO.ANSI.reset, " ", path]
     else
       IO.puts [IO.ANSI.magenta, @get_label, IO.ANSI.reset, " ", path]
-      Sipper.DpdCartClient.get_file(file, config.auth, callback: &download_file_callback(&1, path))
+      @file_client.get_file(file, config.auth, callback: &download_file_callback(&1, path))
     end
   end
 

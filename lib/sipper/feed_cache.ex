@@ -1,6 +1,6 @@
 defmodule Sipper.FeedCache do
-  @path System.tmp_dir! <> "/sipper.cache"
-  @ttl_seconds 60 * 10
+  @path System.tmp_dir! |> Path.join(Application.get_env(:sipper, :feed_cache)[:file])
+  @ttl_seconds Application.get_env(:sipper, :feed_cache)[:ttl_seconds]
 
   def read do
     expire_if_stale
