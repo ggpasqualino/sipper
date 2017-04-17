@@ -2,5 +2,5 @@
 # Both are required to generate a HTTP-authed URL.
 
 defmodule Sipper.File do
-  defstruct id: nil, name: nil
+  defstruct id: nil, name: nil, url: nil
 end

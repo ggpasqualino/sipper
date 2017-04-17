@@ -26,7 +26,7 @@ defmodule Sipper.DpdCartClient do
     receive_file(cb_plus_redirect_handling)
   end
 
-  defp get_external_file(url, callback) do
+  def get_external_file(url, callback) do
     HTTPotion.get(url, timeout: @file_timeout_ms, stream_to: self)
     receive_file(callback)
   end

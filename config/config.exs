@@ -16,13 +16,23 @@ use Mix.Config
 #       metadata: [:user_id]
 
 # NOTE: If you change this config, you need to recompile, by runnning "mix escript.build".
+# config :sipper,
+#   config_file: ".sipper",
+#   feed_cache: [file: "sipper.cache", ttl_seconds: 60 * 10],
+#   feed_client: Sipper.DpdCartClient,
+#   feed_timeout_ms: 100_000,  # The default 5000 will time out sometimes.
+#   feed_parser: Sipper.FeedParser,
+#   file_client: Sipper.DpdCartClient
+
 config :sipper,
-  config_file: ".sipper",
-  feed_cache: [file: "sipper.cache", ttl_seconds: 60 * 10],
-  feed_client: Sipper.DpdCartClient,
+  config_file: ".sipper-tapas",
+  feed_cache: [file: "sipper-tapas.cache", ttl_seconds: 60 * 10],
+  feed_client: Tapas.FeedClient,
   feed_timeout_ms: 100_000,  # The default 5000 will time out sometimes.
-  feed_parser: Sipper.FeedParser,
-  file_client: Sipper.DpdCartClient
+  feed_parser: Tapas.FeedParser,
+  file_client: Tapas.FileClient
+
+config :hound, driver: "chrome_driver"
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment

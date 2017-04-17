@@ -27,6 +27,8 @@ defmodule Sipper.Mixfile do
       {:httpotion, "~> 2.1.0"},
       {:floki, "~> 0.4.1"},
       {:progress_bar, ">= 0.0.5"},
+      {:hound, "~> 1.0"},
+      {:poison, "~> 3.1"}
     ]
   end
 end
